@@ -1,0 +1,17 @@
+@model Event;
+<div class="header">
+    <h2>@Model.Title</h2>
+    <p><a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></p>
+</div>
+<div class="body">
+    <h3>@Model.Date</h3>
+    <p>@Model.Description</p>
+    <h3>Guests</h3>
+    @{
+        foreach (Attendee guest in Model.Attendees)
+        {
+            <p>@guest.User.FirstName @guest.User.LastName</p>
+        }
+    }
+</div>
+<a href="/event/edit/@Model.EventId"><button>Edit Event</button></a>
